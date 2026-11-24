@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0c1412">
+<meta name="description" content="A 365-day learning journey: 45 minutes a day, six pillars, real references.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>The Thinker's Journal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm, nocturnal, scholarly — a notebook you open every evening.
+   IDEA: a year dial, like an astrolabe — 365 ticks that light up one evening at a time.
+   PICTURE: the dial on Today; the guided 45-minute session bar under it.
+   COLOUR and TYPE: ink-green night ground, paper-white ink, sage for growth, coral for "now". Fraunces + Inter.
+   LAYOUT: one phone-width column, bottom tab bar, sheets that slide up. */
+:root{color-scheme:dark;--bg:#0c1412;--bg2:#121d1a;--bg3:#182621;--line:#24372f;--ink:#ede8dd;--mute:#9eaca3;--faint:#6e7d75;--sage:#8fd3b0;--sage2:#2a4a3c;--coral:#f2896b;
+--pI:#8db8e8;--pC:#f0937a;--pP:#b9a3e3;--pF:#d8c27c;--pT:#8fd3b0;--pS:#6cc6c2;--r:16px;--safeB:env(safe-area-inset-bottom,0px);--safeT:env(safe-area-inset-top,0px)}
+:root[data-theme=light],:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{-webkit-text-size-adjust:100%;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:clip;-webkit-tap-highlight-color:transparent}
+a{color:var(--sage);text-decoration:none}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0;padding:0}
+:focus-visible{outline:2px solid var(--sage);outline-offset:2px;border-radius:8px}
+.app{max-width:620px;margin:0 auto;padding:calc(14px + var(--safeT)) 16px calc(96px + var(--safeB))}
+.serif{font-family:Fraunces,Georgia,serif;font-weight:600;letter-spacing:-.01em}
+h1,h2,h3{margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:30px;line-height:1.1}h2{font-size:22px;line-height:1.2}h3{font-size:18px;line-height:1.25}
+.mute{color:var(--mute)}.faint{color:var(--faint)}.small{font-size:14px}.tiny{font-size:13px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
+.brand{display:flex;align-items:center;gap:10px}.brand svg{flex:none}
+.brand b{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:17px;display:block;line-height:1.1}
+.brand span{font-size:13px;color:var(--mute)}
+.syncdot{font-size:13px;color:var(--mute);display:flex;align-items:center;gap:6px;white-space:nowrap}
+.syncdot i{width:8px;height:8px;border-radius:50%;background:var(--faint);display:inline-block}
+.syncdot.on i{background:var(--sage)}.syncdot.err i{background:var(--coral)}
+.view{display:none}.view.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.view.on{animation:none}*{transition:none!important}}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:12px 0}
+.card.flat{background:transparent}
+.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}.wrap{flex-wrap:wrap}
+.grow{flex:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:12px;border:1px solid var(--line);background:var(--bg3);font-weight:500;font-size:15px;white-space:nowrap}
+.btn.primary{background:var(--sage);border-color:var(--sage);color:#0c1a14;font-weight:600}
+.btn.coral{background:var(--coral);border-color:var(--coral);color:#22110b;font-weight:600}
+.btn.ghost{background:transparent}.btn.sm{min-height:36px;padding:0 12px;font-size:14px;border-radius:10px}
+.btn.block{width:100%}.btn:disabled{opacity:.45;cursor:default}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;padding:3px 10px;border-radius:99px;background:var(--bg3);border:1px solid var(--line);color:var(--mute);white-space:nowrap}
+.chip i{width:8px;height:8px;border-radius:50%;background:currentColor;display:inline-block}
+.p-I{color:var(--pI)}.p-C{color:var(--pC)}.p-P{color:var(--pP)}.p-F{color:var(--pF)}.p-T{color:var(--pT)}.p-S{color:var(--pS)}
+input.field,textarea.field,select.field{width:100%;background:#0e1816;border:1px solid var(--line);border-radius:12px;padding:12px;font-size:16px;color:var(--ink)}
+textarea.field{min-height:120px;resize:vertical;line-height:1.5}
+input.field:focus,textarea.field:focus,select.field:focus{border-color:#4f7d68;outline:none}
+label.lab{display:block;font-size:14px;color:var(--mute);margin:12px 0 6px}
+/* Today hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;justify-items:center;margin:6px 0 0}
+.dial{width:min(250px,64vw);aspect-ratio:1;position:relative}
+.dial svg{position:absolute;inset:0;width:100%;height:100%}
+.dial .center{position:absolute;inset:0;display:grid;place-content:center;text-align:center;pointer-events:none}
+.dial .center small{font-size:13px;color:var(--mute)}
+.dial .center b{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(48px,15vw,68px);line-height:1}
+.stats3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%;margin-top:4px}
+.stat{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:10px 8px;text-align:center}
+.stat b{display:block;font-family:Fraunces,Georgia,serif;font-size:24px;font-weight:600;line-height:1.1}
+.stat span{font-size:13px;color:var(--mute)}
+.greet{text-align:center;margin:2px 0 0}
+/* lesson */
+.dayhead{margin-top:18px}
+.dayhead .meta{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;margin-bottom:8px}
+.key{border-left:3px solid var(--sage);padding:4px 0 4px 14px;margin:14px 0 4px;font-size:17px;line-height:1.5}
+.session{position:sticky;top:0;z-index:5;background:linear-gradient(var(--bg) 82%,transparent);padding:10px 0 12px;margin:0 -2px}
+.sesscard{background:var(--bg3);border:1px solid var(--line);border-radius:18px;padding:14px}
+.timer{font-family:Fraunces,Georgia,serif;font-size:44px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.segbar{display:flex;gap:4px;margin:12px 0 2px}
+.segbar span{height:8px;border-radius:5px;background:#2a3b34;position:relative;overflow:hidden}
+.segbar span em{position:absolute;inset:0;width:0;background:var(--sage)}
+.segbar span.cur em{background:var(--coral)}
+.steps{margin-top:4px}
+.step{border:1px solid var(--line);border-radius:16px;margin:10px 0;background:var(--bg2);overflow:hidden}
+.step.cur{border-color:#6b4b3e}
+.step>header{display:flex;align-items:center;gap:12px;padding:12px 14px;min-height:56px;cursor:pointer}
+.tick{flex:none;width:30px;height:30px;border-radius:50%;border:2px solid #3b5248;display:grid;place-items:center;color:transparent}
+.tick.on{background:var(--sage);border-color:var(--sage);color:#0c1a14}
+.step header b{font-weight:600;font-size:16px}
+.step header .mins{margin-left:auto;font-size:14px;color:var(--mute);white-space:nowrap}
+.step .body{padding:0 14px 14px 56px}
+.step.closed .body{display:none}
+.refs{list-style:none;margin:8px 0 0;padding:0}
+.refs li{margin:0 0 8px}
+.refs a{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:#0f1a17;border:1px solid var(--line);color:var(--ink)}
+.refs a small{display:block;color:var(--mute);font-size:13px}
+.refs a .arrow{margin-left:auto;color:var(--sage);flex:none}
+.prompt{background:#0f1a17;border:1px dashed #33493f;border-radius:12px;padding:10px 12px;margin:8px 0}
+.focusrow{display:flex;gap:6px}.focusrow button{flex:1;min-height:44px;border-radius:12px;border:1px solid var(--line);background:var(--bg3);font-weight:600}
+.focusrow button.on{background:var(--sage2);border-color:var(--sage);color:var(--sage)}
+.donebar{display:flex;gap:10px;align-items:center;margin-top:14px}
+.navdays{display:flex;justify-content:space-between;gap:8px;margin:18px 0 4px}
+.banner{display:flex;align-items:center;gap:10px;justify-content:space-between;background:#1d2a25;border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin:12px 0}
+/* journey */
+.q{margin:22px 0 6px}.q span{display:block}
+.q h3{font-size:17px}
+.month{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);margin:10px 0;overflow:hidden}
+.month>button{display:block;width:100%;text-align:left;padding:14px 16px}
+.month .mn{font-family:Fraunces,Georgia,serif;font-size:14px;color:var(--mute)}
+.bar{height:6px;background:#26362f;border-radius:4px;overflow:hidden;margin-top:10px}
+.bar em{display:block;height:100%;background:var(--sage);border-radius:4px}
+.daylist{border-top:1px solid var(--line);padding:6px 8px 10px}
+.dayrow{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:10px 8px;border-radius:10px;min-height:44px}
+.dayrow:hover{background:var(--bg3)}
+.dayrow .n{font-variant-numeric:tabular-nums;color:var(--mute);width:2.6em;flex:none;font-size:14px}
+.dayrow .dot{width:9px;height:9px;border-radius:50%;flex:none;background:currentColor}
+.dayrow .ok{margin-left:auto;color:var(--sage);flex:none}
+.dayrow.today{background:#2a1f1a}
+/* tabs */
+.seg{display:flex;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:3px;gap:3px;margin:10px 0}
+.seg button{flex:1;min-height:40px;border-radius:9px;font-size:15px;color:var(--mute)}
+.seg button.on{background:var(--bg3);color:var(--ink);font-weight:600}
+/* review */
+.flash{min-height:260px;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:24px 18px}
+.flash .qq{font-family:Fraunces,Georgia,serif;font-size:23px;line-height:1.3;font-weight:600}
+.flash .aa{margin-top:16px;font-size:17px;color:var(--ink);border-top:1px solid var(--line);padding-top:16px;text-align:left}
+.grades{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.grades .btn{padding:0 6px;flex-direction:column;gap:0;line-height:1.2;min-height:52px}
+.grades .btn small{font-size:12px;color:var(--mute);font-weight:400}
+.boxes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+/* library */
+.item{padding:12px 0;border-bottom:1px solid var(--line)}.item:last-child{border-bottom:0}
+.item button.link{text-align:left;width:100%}
+.status{min-width:92px}
+/* you */
+.pbar{display:grid;grid-template-columns:7.5em minmax(0,1fr) 3.5em;gap:10px;align-items:center;margin:8px 0;font-size:14px}
+.pbar .bar{margin:0}.pbar b{text-align:right;font-weight:500;font-variant-numeric:tabular-nums}
+.heat{display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:3px;margin-top:8px}
+.heat i{aspect-ratio:1;border-radius:3px;background:#1c2924}
+.heat i.d{background:var(--sage)}.heat i.t{outline:2px solid var(--coral);outline-offset:-2px}
+table.rt{width:100%;border-collapse:collapse;font-size:14px}
+table.rt th,table.rt td{padding:6px 4px;border-bottom:1px solid var(--line);text-align:center}
+table.rt th:first-child,table.rt td:first-child{text-align:left}
+.scroll{overflow-x:auto}
+.check{display:flex;gap:10px;align-items:flex-start;padding:8px 0;min-height:44px}
+.check input{width:20px;height:20px;accent-color:var(--sage);margin-top:2px;flex:none}
+/* sheet + toast */
+.scrim{position:fixed;inset:0;background:#000a;z-index:40;display:none}
+.scrim.on{display:block}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;max-height:88vh;overflow:auto;background:var(--bg2);border-top:1px solid var(--line);border-radius:22px 22px 0 0;padding:18px 18px calc(22px + var(--safeB));transform:translateY(105%);transition:transform .25s ease;max-width:620px;margin:0 auto}
+.sheet{visibility:hidden}.sheet.on{transform:none;visibility:visible}
+.sheet .grab{width:44px;height:5px;border-radius:3px;background:#3a4d45;margin:-6px auto 12px}
+.toast{position:fixed;left:50%;bottom:calc(84px + var(--safeB));transform:translateX(-50%);background:#22352d;color:var(--ink);border:1px solid #3c5a4c;padding:10px 16px;border-radius:12px;z-index:60;font-size:15px;display:none;max-width:90vw}
+/* nav */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;background:#0c1412f2;backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:6px 6px calc(6px + var(--safeB))}
+nav.tabs .in{max-width:620px;margin:0 auto;display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+nav.tabs button{display:flex;flex-direction:column;align-items:center;gap:3px;min-height:52px;justify-content:center;font-size:12px;color:var(--faint);border-radius:12px;position:relative}
+nav.tabs button svg{width:24px;height:24px}
+nav.tabs button.on{color:var(--sage)}
+nav.tabs .badge{position:absolute;top:4px;left:calc(50% + 6px);background:var(--coral);color:#22110b;border-radius:99px;font-size:11px;font-weight:700;padding:0 5px;line-height:16px;min-width:16px;text-align:center}
+.empty{text-align:center;padding:28px 10px;color:var(--mute)}
+.onb{min-height:80vh;display:flex;flex-direction:column;justify-content:center}
+hr.sep{border:0;border-top:1px solid var(--line);margin:16px 0}
+@media (min-width:700px){.app{padding-top:28px}h1{font-size:34px}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="top">
+    <div class="brand">
+      <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="none" stroke="#2c4439" stroke-width="3"/><path d="M20 3 A17 17 0 0 1 36.2 15" fill="none" stroke="#8fd3b0" stroke-width="3" stroke-linecap="round"/><circle cx="20" cy="20" r="4" fill="#f2896b"/></svg>
+      <div><b>The Thinker's Journal</b><span id="brandSub">Learn · Apply · Reflect</span></div>
+    </div>
+    <div class="syncdot" id="syncDot" title="Where your data is saved"><i></i><span>On this device</span></div>
+  </header>
+
+  <section class="view" id="v-today"></section>
+  <section class="view" id="v-journey"></section>
+  <section class="view" id="v-review"></section>
+  <section class="view" id="v-library"></section>
+  <section class="view" id="v-you"></section>
+  <section class="view" id="v-onboard"></section>
+</div>
+
+<nav class="tabs" id="tabs" aria-label="Main">
+  <div class="in">
+    <button data-tab="today" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>Today</button>
+    <button data-tab="journey"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19c4-1 5-6 8-7s5 2 8-6"/><circle cx="4" cy="19" r="1.6"/><circle cx="20" cy="6" r="1.6"/></svg>Journey</button>
+    <button data-tab="review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="6" width="13" height="14" rx="2"/><path d="M8 3h10a2 2 0 0 1 2 2v12"/></svg>Review<span class="badge" id="dueBadge" hidden></span></button>
+    <button data-tab="library"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4v16H5zM10 4h4v16h-4zM15.5 5l3.5-.8 3 15.3-3.6.8z"/></svg>Library</button>
+    <button data-tab="progress"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 20V10M10 20V4M15 20v-7M20 20v-11"/></svg>Progress</button>
+  </div>
+</nav>
+
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true"><div class="grab"></div><div id="sheetBody"></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="content.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
